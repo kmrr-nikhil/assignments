@@ -6,13 +6,27 @@
     <title>To-Do</title>
 </head>
 <body>
+    <div>
     <h1>To-Do list</h1>
     <h4>1. Study</h4>
     <h4>2. Run</h4>
     <h4> Contents will be displayed here once you enter value and hit the button</h4>
 
-    <input type="text"> </input>
-    <button>Add Todo</button>
+    <input type="text" placeholder="Enter text"> </input>
+    <button onclick="addNew()">Add Todo</button>
+    </div>
+
+
+    <div>
+        <div id="btn_1">
+        <h3 >This is first para</h3>
+        <button onclick="deletee(1)">Click me</button>
+        </div>
+        <div id="btn_2">
+        <h3 >This is second para</h3>
+        <button onclick="deletee(2)">Click me</button>
+        </div>
+    </div>
 
     <script>
         
@@ -24,6 +38,22 @@
                 ctrl=ctrl+1;
             }
         setInterval(callback,1000)
+
+        function deletee(n)
+        {
+            const ele=document.getElementById("btn_"+n);
+            ele.parentNode.removeChild(ele);
+        }
+
+        function addNew()
+        {
+            const eell=document.createElement("div");
+            eell.innerHTML=document.querySelector("input").value;
+            const parentELE=document.querySelector("div");
+            parentELE.appendChild(eell);
+        }
+
+
     </script>
 </body>
 </html> 
