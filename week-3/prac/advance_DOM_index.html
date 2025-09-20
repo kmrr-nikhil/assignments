@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance DOM</title>
+</head>
+<input type="text" placeholder="Enter text">  
+<button onclick="todo()">Add TODO!</button>
+</body>
+
+<script>
+    let ctr=1;
+    function todo()
+    {
+        const inputValue= document.querySelector("input").value;
+        const spanEl=document.createElement("span");
+        const button=document.createElement("button");
+        spanEl.innerHTML=inputValue;
+        button.innerHTML="Delete";
+
+
+
+        const newElement=document.createElement("div");
+        const currentId = ctr;
+        newElement.setAttribute("id", "todo_"+ctr);
+
+        button.onclick=function()
+        {
+            deleteTODO(currentId);
+        }
+
+        newElement.appendChild(spanEl);
+        newElement.appendChild(button);
+        document.querySelector("body").appendChild(newElement);
+        
+        ctr=ctr+1;
+    }
+
+    function deleteTODO(index)
+    {
+        const deleteElement= document.querySelector("#todo_"+index);
+        deleteElement.parentNode.removeChild(deleteElement);
+    }
+</script>
+</html>
