@@ -13,7 +13,8 @@
     <h4> Contents will be displayed here once you enter value and hit the button</h4>
 
     <input type="text" placeholder="Enter text"> </input>
-    <button onclick="addNew()">Add Todo</button>
+    <button onclick="addNew()" id="button">Add Todo</button>
+    
     </div>
 
 
@@ -32,6 +33,7 @@
         
 
         let ctrl=1;
+        let ctr=1;
         function callback()
             {
                 let change=document.querySelectorAll("h4")[2].innerHTML=ctrl
@@ -48,10 +50,32 @@
         function addNew()
         {
             const eell=document.createElement("div");
-            eell.innerHTML=document.querySelector("input").value;
+            eell.setAttribute("id",ctr);
+            
+            const input = document.querySelector("input");
+            const qwerty= input.value;
+            eell.innerHTML="<div>"+qwerty+"</div> <button onclick='deletetodo("+ctr+")'>delete button</button>"
             const parentELE=document.querySelector("div");
             parentELE.appendChild(eell);
+            ctr=ctr+1;
         }
+
+        
+         const input = document.querySelector("input");
+    const button = document.getElementById("button");
+
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            button.click(); // trigger button action
+        }
+    });
+
+    function deletetodo(index)
+    {
+        const elementt=document.getElementById(index);
+        elementt.parentNode.removeChild(elementt);
+    }
 
 
     </script>
